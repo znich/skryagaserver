@@ -1,7 +1,5 @@
-# spring-boot-java-basic
+# Skryaga server application
 
 
-http://localhost:8080/swagger-ui.html
+http://skryaga.com:8080/swagger-ui.html
 
-
-`./mvnw compile flyway:migrate`
