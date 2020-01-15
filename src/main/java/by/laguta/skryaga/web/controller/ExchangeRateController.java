@@ -32,7 +32,7 @@ public class ExchangeRateController {
         }
     }
 
-    @PostMapping("")
+   /* @PostMapping("")
     @ResponseStatus(CREATED)
     public User createUser(@RequestBody User user) {
         return null;
@@ -45,6 +45,6 @@ public class ExchangeRateController {
 
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
-    }
+    }*/
 
 }

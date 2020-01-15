@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -27,18 +28,16 @@ public class ExchangeRateService {
     }
 
     private Set<ExchangeRate> getExchangeRates() throws ExchangeRateUpdateException {
-        Set<ExchangeRate> exchangeRateSet = new HashSet<ExchangeRate>();
+        Set<ExchangeRate> exchangeRateSet;
         try {
             Document doc = getDocument();
             Elements table = doc.select(".nal");
-            Elements rows = table.select("tr");
+            Elements rows = table.select("tr:not(.nnal)");
             List<Element> currencyRows = rows.subList(3, rows.size());
-            for (Element row : currencyRows) {
-                ExchangeRate exchangeRate = parseExchangeRate(row, LocalDateTime.now());
-                if (exchangeRate != null) {
-                    exchangeRateSet.add(exchangeRate);
-                }
-            }
+            exchangeRateSet = currencyRows.stream()
+                    .map(row -> parseExchangeRate(row, LocalDateTime.now()))
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.toSet());
 
         } catch (Exception e) {
             log.error("Could not load page ", e);
