@@ -24,7 +24,7 @@
         <spring-cloud.version>Finchley.SR1</spring-cloud.version>
         <chaos-monkey-spring-boot.version>2.0.0</chaos-monkey-spring-boot.version>
         <testcontainers.version>1.8.3</testcontainers.version>
-        <swagger2.version>2.9.2</swagger2.version>
+        <swagger2.version>2.10.0</swagger2.version>
         <logstash-logback.version>4.9</logstash-logback.version>
 
         <flyway.url>jdbc:postgresql://localhost:5432/postgres</flyway.url>
